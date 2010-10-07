@@ -75,6 +75,21 @@ class Socializer extends Extension {
         }
     }
 
+    public function getSocializerItemAction(){
+        switch (SocializerAdmin::get_LibraryUse()) {
+            case 'MT':
+                $action = 'rel="lightbox"';
+                break;
+            case 'JQuery':
+
+                break;
+            case 'Prototype':
+                break;
+            default:
+                break;
+        }
+        return $action;
+    }
     public function SocializerComplex() {
         
        switch (SocializerAdmin::get_LibraryUse()) {
