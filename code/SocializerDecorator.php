@@ -20,7 +20,7 @@ class SocializerDecorator extends DataObjectDecorator {
 
 class Socializer extends Extension {
 
-    function getSocialItems() {
+    public function getSocialItems() {
         $A_obj = DataObject::get('Socializer_items');
 
         $ob = new DataObjectSet();
@@ -32,7 +32,7 @@ class Socializer extends Extension {
         }
         if (SocializerAdmin::get_InviteFriendEmail()){
             $ob->push(new ArrayData(array(
-                    'Service' => 'mail',
+                    'Service' => 'email',
                     'Name'  => 'Send2Friend',
                     'Url'   =>  $curr->BaseHref() . 'send2friend',
                     'Title' => 'Invitar a un amigo'
@@ -50,12 +50,56 @@ class Socializer extends Extension {
         return $ob?$ob:false;
     }
 
-    function SocializerSimple() {
+    public function getSocializerTheme(){
+        return Director::absoluteURL( SOCIALIZERPATH .
+                "/images/" .
+                SocializerAdmin::get_SocializerTheme() .
+                "/" .
+                SocializerAdmin::get_SocializerThemeSize() .
+                "/");
+    }
+
+
+    public function SocializerBar() {
+       if (SocializerAdmin::get_SimpleSocializer()) {
+           return $this->SocializerSimple();
+       } else {
+           return $this->SocializerComplex();
+       }
+    }
+
+    public function SocializerSimple() {
         $sitetree = $this->owner;
         if ($sitetree->SocializerDecorator) {
             return  $this->owner->renderWith('Socializer');
         }
     }
-}
 
+    public function SocializerComplex() {
+        
+       switch (SocializerAdmin::get_LibraryUse()) {
+           case 'MT':
+               Requirements::javascript(SOCIALIZERPATH."/javascript/mediaboxAdvance/mootools-1.2.4-core.js");
+               Requirements::javascript(SOCIALIZERPATH."/javascript/mediaboxAdvance/mediaboxAdv-1.3.1b.js");
+               Requirements::css(SOCIALIZERPATH."/javascript/mediaboxAdvance/mediaboxAdvBlack21.css");
+               break;
+           case 'JQuery':
+               Requirements::javascript(THIRDPARTY_PATH . "/jquery/jquery-packed.js");
+               Requirements::javascript(SOCIALIZERPATH.'/javascript/fancybox/jquery.mousewheel-3.0.2.pack.js');
+               Requirements::javascript(SOCIALIZERPATH.'/javascript/fancybox/jquery.fancybox-1.3.1.js');
+               Requirements::css(SOCIALIZERPATH.'/javascript/fancybox/jquery.fancybox-1.3.1.css');
+               break;
+           case 'Prototype':
+               Requirements::javascript(THIRDPARTY_PATH . 'prototype/prototype.js');
+               Requirements::javascript(THIRDPARTY_PATH . 'scriptaculous/scriptaculous.js?load=effects');
+               Requirements::javascript(SOCIALIZERPATH . '/javascript/modalbox/modalbox.js');
+               Requirements::css(SOCIALIZERPATH . '/javascript/modalbox/modalbox.css' );
+           default:
+               //Nothing
+               break;
+       }
+       return $this->owner->renderWith('SocializerComplex');
+    }
+
+}
 ?>

@@ -15,7 +15,22 @@ class SocializerAdmin extends LeftAndMain {
     protected static $PrintPage = false;
         static function set_PrintPage($bool) { self::$PrintPage = $bool; }
         static function get_PrintPage() { return self::$PrintPage; }
-    
+
+   protected static $LibraryUse = 'Mootools';
+        static function set_LibraryUse($lib) {self::$LibraryUse = $lib;}
+        static function get_LibraryUse(){ return self::$LibraryUse; }
+
+   protected static $SimpleSocializer = false;
+        static function set_SimpleSocializer($bool) { self::$SimpleSocializer = $bool; }
+        static function get_SimpleSocializer(){return self::$SimpleSocializer;}
+
+   protected static $SocializerTheme = 'wpzoom';
+        static function set_SocializerTheme($theme) { self::$SocializerTheme = $theme; }
+        static function get_SocializerTheme() { return self::$SocializerTheme; }
+
+   protected static $SocializerThemeSize = '32px';
+        static function set_SocializerThemeSize($theme) { self::$SocializerThemeSize = $theme; }
+        static function get_SocializerThemeSize() { return self::$SocializerThemeSize; }
 
     public function init() {
         parent::init();

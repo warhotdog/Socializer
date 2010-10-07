@@ -1,4 +1,6 @@
-<?php 
+<?php
+DEFINE('SOCIALIZERPATH', basename(dirname(__FILE__)));
+
 DataObject::add_extension('SiteTree', 'SocializerDecorator');
 Object::add_extension('ContentController' , 'Socializer');
 
@@ -14,6 +16,9 @@ Director::addRules(100, array(
 
 SocializerAdmin::set_InviteFriendEmail(true);
 SocializerAdmin::set_PrintPage(true);
+SocializerAdmin::set_LibraryUse('MT');
+SocializerAdmin::set_SimpleSocializer(false);
+
 
 if (SocializerAdmin::get_InviteFriendEmail()) {
     Director::addRules('50',array(
