@@ -81,11 +81,14 @@ class Socializer extends Extension {
                 $action = 'rel="lightbox[send2friend 400 205]"';
                 break;
             case 'JQuery':
-
+                $action = 'id="send2friend" '; //suck JQuery i cant add onclick  i can do?
                 break;
             case 'Prototype':
+                $action = 'onclick="Modalbox.show(this.href, {title: this.title, width: 400}); return false;"';
+
                 break;
             default:
+                $action = 'id="send2friend"';
                 break;
         }
         return $action;
@@ -99,14 +102,19 @@ class Socializer extends Extension {
                Requirements::css(SOCIALIZERPATH."/javascript/mediaboxAdvance/mediaboxAdvBlack21.css");
                break;
            case 'JQuery':
-               Requirements::javascript(THIRDPARTY_PATH . "/jquery/jquery-packed.js");
+               //Requirements::javascript(THIRDPARTY_DIR . "/jquery/jquery.js");
+               Requirements::javascript('http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js');
                Requirements::javascript(SOCIALIZERPATH.'/javascript/fancybox/jquery.mousewheel-3.0.2.pack.js');
                Requirements::javascript(SOCIALIZERPATH.'/javascript/fancybox/jquery.fancybox-1.3.1.js');
                Requirements::css(SOCIALIZERPATH.'/javascript/fancybox/jquery.fancybox-1.3.1.css');
+               Requirements::customScript('jQuery(document).ready(function() { $("#send2friend").fancybox({"width":400, "height":205, "type":"iframe" });});');
                break;
            case 'Prototype':
-               Requirements::javascript(THIRDPARTY_PATH . 'prototype/prototype.js');
-               Requirements::javascript(THIRDPARTY_PATH . 'scriptaculous/scriptaculous.js?load=effects');
+               //Requirements::javascript(THIRDPARTY_DIR . '/prototype/prototype15.js');
+               Requirements::javascript('http://ajax.googleapis.com/ajax/libs/prototype/1.6.1.0/prototype.js');
+               Requirements::javascript('http://ajax.googleapis.com/ajax/libs/scriptaculous/1.8.3/scriptaculous.js?load=effects');
+                Requirements::javascript('http://ajax.googleapis.com/ajax/libs/scriptaculous/1.8.3/effects.js');
+               // Requirements::javascript(THIRDPARTY_DIR . '/scriptaculous/scriptaculous.js?load=effects');
                Requirements::javascript(SOCIALIZERPATH . '/javascript/modalbox/modalbox.js');
                Requirements::css(SOCIALIZERPATH . '/javascript/modalbox/modalbox.css' );
            default:

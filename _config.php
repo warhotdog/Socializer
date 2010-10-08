@@ -16,7 +16,7 @@ Director::addRules(100, array(
 
 SocializerAdmin::set_InviteFriendEmail(true);
 SocializerAdmin::set_PrintPage(true);
-SocializerAdmin::set_LibraryUse('MT');
+SocializerAdmin::set_LibraryUse('JQuery'); //JQuery  MT  Prototype
 SocializerAdmin::set_SimpleSocializer(false);
 
 
