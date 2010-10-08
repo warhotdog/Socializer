@@ -78,7 +78,7 @@ class Socializer extends Extension {
     public function getSocializerItemAction(){
         switch (SocializerAdmin::get_LibraryUse()) {
             case 'MT':
-                $action = 'rel="lightbox"';
+                $action = 'rel="lightbox[send2friend 400 205]"';
                 break;
             case 'JQuery':
 

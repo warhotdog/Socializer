@@ -1,10 +1,7 @@
 <?php
 class Send2Friend_Controller extends Page_Controller {
     var $owner;
-    public static $url_handlers = array(
-            'send2friend/$Action/$ID/$OtherID' => 'index'
-    );
-
+    
     public function init() {
         $this->owner = $this;
         if(Director::is_ajax()) {
@@ -18,19 +15,16 @@ class Send2Friend_Controller extends Page_Controller {
     public function Link($action = null) {
         return "send2friend/$action";
     }
-    public function forTemplate() {
-        if ($this->isAjax) {
-        return $this->renderWith(array('Page','Send2Friend'));
-        } else {
-        return $this->renderWith('Send2Friend');
-        }
-    }
-    
     public function ref(){
         return isset($_REQUEST['ref'])?$_REQUEST['ref']:$this->owner->BaseHref();
     }
+    public function Iframe(){
+        Requirements::clear();
+        Requirements::css(SOCIALIZERPATH . '/css/Iframe.css');
 
-    public function SendFriendForm(){
+        return $this->renderWith('Iframe');
+    }
+    public function getSendFriendForm(){
         $fields = new FieldSet(
                 new EmailField('From','De'),
                 new EmailField('To','Para'),
@@ -40,11 +34,12 @@ class Send2Friend_Controller extends Page_Controller {
                 new FormAction('DoSend','Enviar')
                 //new FormAction('Cerrar','Cerrar')
                 );
-        $form = new Form($this,'SendFriendForm',$fields,$actions);
+        $validator = new RequiredFields('From','To');
+        $form = new Form($this,'DoSend',$fields,$actions,$validator);
         return $form;
     }
 
-    public function DoSend($data,$form) {
+    public function DoSend($data) {
 
 
         print_r($data);
