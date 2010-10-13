@@ -1,0 +1,30 @@
+SilverStripe CMS  Module (Socializer)
+
+This is a prewview alpha of the Socializer 4 SilverStripe,  module which whill
+enable automatically inserting Social Bookmarks
+
+This modules written by Daniel Suzan(WaRHoTDoG)
+
+To Install
+
+1- Rename the extracted directory to "Socializer" and place i nthe root of your
+SilverStripe Installation
+
+2. Run /dev/build/
+
+3- Configure the module for your preference in _config.php
+
+/* View the _config.php for more information */
+SocializerAdmin::set_InviteFriendEmail(true); // false
+SocializerAdmin::set_PrintPage(true); // false
+SocializerAdmin::set_SocializerTheme('wpzoom'); // VSM
+SocializerAdmin::set_SocializerThemeSize('32px'); // 16px,24px,32px,48px,64px
+SocializerAdmin::set_LibraryUse('MT'); //JQuery  MT  Prototype
+SocializerAdmin::set_SimpleSocializer(true); // false
+
+4- Add the variable '$SocializerBar' to the position you want display
+if you user SipleSocializer enable (true) need $Form variable
+
+5- Go to Admin->Socializer  and add you social sites
+
+6- Go To Behaviour and check Show ShareIcons on this page.

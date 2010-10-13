@@ -107,7 +107,8 @@ class Socializer extends Extension {
                Requirements::javascript(SOCIALIZERPATH.'/javascript/fancybox/jquery.mousewheel-3.0.2.pack.js');
                Requirements::javascript(SOCIALIZERPATH.'/javascript/fancybox/jquery.fancybox-1.3.1.js');
                Requirements::css(SOCIALIZERPATH.'/javascript/fancybox/jquery.fancybox-1.3.1.css');
-               Requirements::customScript('jQuery(document).ready(function() { $("#send2friend").fancybox({"width":400, "height":205, "type":"iframe" });});');
+               Requirements::customScript('jQuery(document).ready(function() { var s2f =  $("#send2friend").fancybox({"width":400, "height":205, "type":"iframe" });});');
+               
                break;
            case 'Prototype':
                //Requirements::javascript(THIRDPARTY_DIR . '/prototype/prototype15.js');
@@ -121,6 +122,7 @@ class Socializer extends Extension {
                //Nothing
                break;
        }
+       Requirements::javascript(SOCIALIZERPATH . '/javascript/closebox.js');
        return $this->owner->renderWith('SocializerComplex');
     }
 

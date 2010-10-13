@@ -21,7 +21,8 @@ class Send2Friend_Controller extends Page_Controller {
     public function Iframe(){
         Requirements::clear();
         Requirements::css(SOCIALIZERPATH . '/css/Iframe.css');
-
+        Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js'); 
+        Requirements::javascript(SOCIALIZERPATH."/javascript/FormSubmit.js");
         return $this->renderWith('Iframe');
     }
     public function getSendFriendForm(){
@@ -36,13 +37,12 @@ class Send2Friend_Controller extends Page_Controller {
                 );
         $validator = new RequiredFields('From','To');
         $form = new Form($this,'DoSend',$fields,$actions,$validator);
-        return $form;
+        //$form->forAjaxTemplate();
+        return $form->forAjaxTemplate();
     }
 
     public function DoSend($data) {
 
-
-        print_r($data);
         $from = $data['From'];
         $to = $data['To'];
         $subject = '';
@@ -54,7 +54,13 @@ class Send2Friend_Controller extends Page_Controller {
         $mail->populateTemplate(array(
             'Ref' => $data['ref']
         ));
-        //$mail->send();
+        $mail->send();
+        FormResponse::update_dom_id('Form_DoSend_error', '<div>Enviado..</div>');
+        FormResponse::add(' window.setTimeout("parent.s2fclose();",3000);'."\n\r");
+        
+        //Director::redirectBack();
+        return FormResponse::respond();
+
     }
 
 }
