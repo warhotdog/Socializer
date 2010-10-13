@@ -7,7 +7,7 @@
 	<div style="clear:both;"></div>
 	<form class="actionparams" id="addlink_options" style="display: none" action="admin/socializer/addlink">
 		<input type="hidden" name="ID" value="new" />
-		<input type="submit" value="<% _t('ADDLINK','Add a link xXx') %>" />
+		<input type="submit" value="<% _t('ADDLINK') %>" />
 	</form>
 <div id="sitetree_holder" style="overflow:auto">
 	$SiteTreeAsUL

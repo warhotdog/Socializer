@@ -27,18 +27,16 @@ class Send2Friend_Controller extends Page_Controller {
     }
     public function getSendFriendForm(){
         $fields = new FieldSet(
-                new EmailField('From','De'),
-                new EmailField('To','Para'),
+                new EmailField('From',_t('Send2Friend.FROM')),
+                new EmailField('To',_t('Send2Friend.TO')),
                 new HiddenField('ref','ref',$this->ref())
                 );
         $actions = new FieldSet(
-                new FormAction('DoSend','Enviar')
-                //new FormAction('Cerrar','Cerrar')
+                new FormAction('DoSend',_t('Send2Friend.SEND'))
                 );
         $validator = new RequiredFields('From','To');
         $form = new Form($this,'DoSend',$fields,$actions,$validator);
-        //$form->forAjaxTemplate();
-        return $form->forAjaxTemplate();
+        return $form->forAjaxTemplate(); // This is really necesary ?
     }
 
     public function DoSend($data) {
@@ -55,7 +53,7 @@ class Send2Friend_Controller extends Page_Controller {
             'Ref' => $data['ref']
         ));
         $mail->send();
-        FormResponse::update_dom_id('Form_DoSend_error', '<div>Enviado..</div>');
+        FormResponse::update_dom_id('Form_DoSend_error', "<div>" ._t('Send2Friend.SENDING') . "</div>");
         FormResponse::add(' window.setTimeout("parent.s2fclose();",3000);'."\n\r");
         
         //Director::redirectBack();

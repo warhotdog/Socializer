@@ -12,7 +12,7 @@ class SocializerDecorator extends DataObjectDecorator {
         $fields->addFieldToTab("Root.Behaviour",
                 new CheckboxField(
                 "SocializerDecorator",
-                "Show Share Icons on this page ?"
+                _t('SocializerDecorator.SHOWICONS')
                 ),'ShowInMenus');
         return $fields;
     }
@@ -35,7 +35,7 @@ class Socializer extends Extension {
                     'Service' => 'email',
                     'Name'  => 'Send2Friend',
                     'Url'   =>  $curr->BaseHref() . 'send2friend',
-                    'Title' => 'Invitar a un amigo'
+                    'Title' => _t('SocializerDecorator.INVITEFRIEND')
                     )));
         }
         if (SocializerAdmin::get_PrintPage()) {
@@ -43,7 +43,7 @@ class Socializer extends Extension {
                 'Service' => 'print',
                 'Name'  => 'PrintPage',
                 'Url'   => 'javascript:void(0);" onclick="window.print()"',
-                'Title' => 'Imprimir'
+                'Title' => _t('SocializerDecorator.PRINT')
             )));
         }
 

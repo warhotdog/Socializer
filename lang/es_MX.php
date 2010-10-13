@@ -16,6 +16,10 @@ if(array_key_exists('es_MX', $lang) && is_array($lang['es_MX'])) {
 	$lang['es_MX'] = $lang['en_US'];
 }
 
+$lang['es_MX']['Socializer']['ADMININSTRUCTIONS'] = <<<INSTRUCTIONS
+Agrege nuevos links de redes sociales si no tiene ninguno de click en "Nuevo Socializer" para comenzar
+INSTRUCTIONS;
+
 $lang['es_MX']['Socializer']['MODULENAME'] = 'Socializer';
 $lang['es_MX']['Socializer']['ROOT'] = 'Socializer';
 $lang['es_MX']['Socializer']['BTNNEW'] = 'Nuevo Socializador';
@@ -49,4 +53,17 @@ $lang['es_MX']['Socializer']['INSTRUCTION'] = <<<INSTRUCTIONS
  
 INSTRUCTIONS;
 
+$lang['es_MX']['SocializerDecorator']['SHOWICONS'] = '¿Desea mostrar los iconos de redes sociales?';
+$lang['es_MX']['SocializerDecorator']['INVITEFRIEND'] = 'Invitar a un amigo';
+$lang['es_MX']['SocializerDecorator']['PRINT'] = 'Imprimir';
+
+$lang['es_MX']['Send2Friend']['FROM'] = 'De';
+$lang['es_MX']['Send2Friend']['TO'] = 'Para';
+$lang['es_MX']['Send2Friend']['SEND'] = 'Enviar';
+$lang['es_MX']['Send2Friend']['SENDING'] = "Enviando...";
+$lang['es_MX']['Send2Friend']['INVITINGTEMPLATE'] = <<<TEMPLATE
+<div>
+<p> Un Amigo tuyo considera de deberias o que te podria interesar la siguiente pagina: %s </p>
+</div>
+TEMPLATE;
 ?>

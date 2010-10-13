@@ -1,10 +1,10 @@
-<div class="title"><div>My admin $ClassName </div></div>
+<div class="title"><div>$ApplicationName</div></div>
 
 <% if EditForm %>
 	$EditForm
 <% else %>
 	<form id="Form_EditForm" action="admin/my?executeForm=EditForm" method="post" enctype="multipart/form-data">
-		<p>Welcome to my $ApplicationName admin section.  Please choose something from the left.</p>
+		<p><% _t('Socializer.ADMININSTRUCTIONS') %></p>
 	</form>
 <% end_if %>
 
