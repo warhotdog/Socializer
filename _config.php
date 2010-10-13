@@ -25,14 +25,14 @@ SocializerAdmin::set_SocializerTheme('wpzoom'); //VSM
 SocializerAdmin::set_SocializerThemeSize('32px'); //16px, 24px, 32px, 48px, 64px
 /* Under Image Folder add 16px 24px ..etc icon size look estructure for add yours icons */
 
-SocializerAdmin::set_LibraryUse('MT'); //JQuery  MT  Prototype
+SocializerAdmin::set_LibraryUse('JQuery'); //JQuery  MT  Prototype
 // Prototype No Ready Yet
 /* Select JS Library
  * when you enable InviteFriendEmail and SimpleSocializer is false
  * the InviteForm open on Lightbox
  * MT = Mootools
  * JQuery = JQuery
- * Prototype = Protorype
+ * Prototype = Protorype    No Ready Yet
  */
 
 SocializerAdmin::set_SimpleSocializer(false); // false

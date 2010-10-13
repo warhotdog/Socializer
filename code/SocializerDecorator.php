@@ -84,7 +84,7 @@ class Socializer extends Extension {
                 $action = 'id="send2friend" '; //suck JQuery i cant add onclick  i can do?
                 break;
             case 'Prototype':
-                $action = 'onclick="Modalbox.show(this.href, {title: this.title, width: 400}); return false;"';
+                $action = 'id="send2friend"'; //'onclick="Modalbox.show(this.href, {title: this.title, width: 400}); return false;"';
 
                 break;
             default:
